@@ -2,9 +2,21 @@
 
 The universal exporter is intended as a module to export complete datasets from a number of different backends using a simple to use, and simple to extend, API.
 
-Internally the `exporter` relies heavily on [promises](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+Internally the `exporter` relies internally on streams and heavily on [promises](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-The module is isomorphic, in that the same code can be run on both the client or server environment (or both using the [remote](#remote-server-calls) feature).
+The module can be used both on the client and server (or both using the [remote](#remote-server-calls) feature).
+
+- [Overview of usage](#overview-of-usage)
+- [Example](#example)
+- [Current supported engines & export targets](#current-supported-engines--export-targets)
+- [API](#api)
+- [Static methods](#static-api)
+- [Instance methods](#instance-methods)
+- [Remote server calls](#remote-server-calls)
+- [Configuration](#configuration)
+- [Passing custom headers in requests](#passing-custom-headers-in-requests)
+- [Errors](#errors)
+- [TODO / wishlist](#todo--wishlist)
 
 ## Overview of usage
 
@@ -16,8 +28,6 @@ In general, developer usage of the exporter library will be as follows:
 - Manipulate the data, `filter`ing, `map`ping, adding `columns`, etc
 - `save` to an output format
 - Finally define where the saved data should go (download, piped stream, etc)
-
-Due to the potential size of data contained inside of the exporter, it's important to let the instance go out of scope once the code has finished using the exporter.
 
 All function calls will return the *current* instance allowing for a chaining call. Note that this different, for example, to jQuery, whereby each chained call returns a *new instance*. This is not the case for exporter.
 
@@ -115,9 +125,11 @@ When the configuration loads data from a remote URL, the response is put through
 An engine must export a function that receives the raw data from the source, that returns a promise that fulfils with an array. This can be then attached to `exporter` as seen in this contrived example:
 
 ```js
-var jsonEngine = function (json) {
+var JSONStream = require('JSONStream');
+
+var jsonEngine = function (stream) {
   return new Promise(function (resolve, reject) {
-    resolve(JSON.parse(json));
+    resolve(stream.pipe(JSONStream.parse());
   });
 };
 
@@ -585,6 +597,18 @@ The `$request` object is passed directly into the underlying `fetch` called, and
 
 ## Errors
 
+### Stream ends too early / file is truncated
+
+During development, I found that node 0.10.x would close the stream, without errors, early if it was exporting a large dataset (500,000 rows upwards) to the `xlsx` output.
+
+I found in my testing an upper limit of ~120,000 rows when exporting to `xlsx`. However, if exporting to `csv` there's no upper limit (that I found).
+
+There's no solution for this problem.
+
+I also tried upgrading to node 0.12.x and although this solved the closing issue, the code now emitted a memory problem that causes the stream processing to get slower and slower. A source of 500,000 rows took 30 minutes to complete. This should only take about 4-5 minutes.
+
+Again, there is no solution to this problem.
+
 ### Function signature not recognised for ...
 
 This means that an remote function call was attempted in production mode when the function was not recognised or validated by the server.
@@ -620,3 +644,25 @@ store.get('auth').then(function (details) {
   // now do something with `e`
 });
 ```
+
+## TODO / Wishlist
+
+### Simplify the configuration
+
+The original design was to allow for a config to support multiple sources of data of any type (couch, elasticsearch, etc), but in reality a project only uses one type of backend, so the configuration options becomes more complicated than it needs to be.
+
+Rather than calling an ES based endpoint like this:
+
+```js
+exporter().get.es.search()...
+```
+
+If a single data source is provided in the config, ideally the exporter would look like this:
+
+```js
+exporter().get()...
+```
+
+### Automatically send cred
+
+The `request` object for [fetch]
