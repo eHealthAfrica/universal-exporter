@@ -663,6 +663,16 @@ If a single data source is provided in the config, ideally the exporter would lo
 exporter().get()...
 ```
 
-### Automatically send cred
+### Automatically send credentials & `$request`
 
-The `request` object for [fetch]
+The `request` object for [fetch](http://fetch.spec.whatwg.org) is currently a dumping ground for anything that needs either custom headers (such as credentials) or `POST` data.
+
+It makes sense to make some of these defaulted and if the configuration said that the data source was a `POST` that passing options to the `$method` could be used as the request data, something along these lines:
+
+```js
+// dsl is defined somewhere else, and the JSON is used as the POSTed
+// body to our data source.
+exporter().get({
+  query: dsl.toJSON()
+})...
+```
