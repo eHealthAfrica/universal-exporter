@@ -67,7 +67,6 @@
     "stream-reduce": "^1.0.3",
     "through": "^2.3.7",
     "through-parse": "^0.1.0",
-    "xlsx": "^0.8.0",
     "xlsx-export": "0.0.4"
   }
 }
