@@ -1,0 +1,397 @@
+{
+  "took": 122,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "failed": 0
+  },
+  "hits": {
+    "total": 2280,
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "call_center_0",
+        "_type": "case",
+        "_id": "0f8b07372fe6ce8760cfee77e2842a3e",
+        "_score": null,
+        "fields": {
+          "contact.location.adminDivision3.id": [
+            "32-02"
+          ],
+          "callDetails": [
+            "Happy is for hobos?"
+          ],
+          "createdBy.fullName": [
+            "test fullname"
+          ],
+          "contact.name": [
+            "Remy Sharp"
+          ],
+          "contact.location.adminDivision2.id": [
+            "32"
+          ],
+          "contact.location.adminDivision1.name": [
+            "west"
+          ],
+          "contact.category": [
+            "Surveillance Officer"
+          ],
+          "patient.age.months": [
+            0
+          ],
+          "patient.address": [
+            "On top of the mountain"
+          ],
+          "patient.location.adminDivision1.id": [
+            "W"
+          ],
+          "callNature": [
+            "quarantine"
+          ],
+          "contact.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "contact.location.adminDivision1.id": [
+            "W"
+          ],
+          "patient.patientName": [
+            "Mountain Chief"
+          ],
+          "patient.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "patient.age.years": [
+            0
+          ],
+          "patient.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "patient.location.adminDivision2.id": [
+            "32"
+          ],
+          "patient.location.adminDivision1.name": [
+            "west"
+          ],
+          "patient.location.adminDivision3.id": [
+            "32-02"
+          ],
+          "patient.status": [
+            "alive"
+          ],
+          "createdOn": [
+            "2015-03-26T09:54:11.157Z"
+          ],
+          "patient.id": [
+            989438
+          ],
+          "patient.gender": [
+            "F"
+          ],
+          "contact.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "contact.phoneNo": [
+            "6284129"
+          ]
+        },
+        "sort": [
+          1427363651157
+        ]
+      },
+      {
+        "_index": "call_center_0",
+        "_type": "case",
+        "_id": "452f40edadc0bb269615e19ab1b919b9",
+        "_score": null,
+        "fields": {
+          "contact.location.adminDivision3.id": [
+            "32-01"
+          ],
+          "callDetails": [
+            "New case!"
+          ],
+          "contact.name": [
+            "Sam McGee"
+          ],
+          "createdBy.fullName": [
+            "sl_dis_user"
+          ],
+          "contact.location.adminDivision2.id": [
+            "32"
+          ],
+          "contact.location.adminDivision1.name": [
+            "west"
+          ],
+          "contact.category": [
+            "Medical Facility"
+          ],
+          "patient.age.months": [
+            0
+          ],
+          "patient.address": [
+            "22 Morland Rd"
+          ],
+          "patient.location.adminDivision1.id": [
+            "W"
+          ],
+          "callNature": [
+            "security threat"
+          ],
+          "contact.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "contact.location.adminDivision1.id": [
+            "W"
+          ],
+          "patient.patientName": [
+            "Benedict Gerrard"
+          ],
+          "contact.address": [
+            "22 Morland Rd"
+          ],
+          "patient.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "patient.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "patient.age.years": [
+            33
+          ],
+          "patient.location.adminDivision2.id": [
+            "32"
+          ],
+          "patient.location.adminDivision1.name": [
+            "west"
+          ],
+          "patient.location.adminDivision3.id": [
+            "32-02"
+          ],
+          "patient.status": [
+            "alive"
+          ],
+          "createdOn": [
+            "2015-03-18T16:57:01.343Z"
+          ],
+          "patient.id": [
+            382983
+          ],
+          "caseId": [
+            "BENDI"
+          ],
+          "patient.gender": [
+            "M"
+          ],
+          "contact.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "contact.phoneNo": [
+            "6284989129"
+          ]
+        },
+        "sort": [
+          1426697821343
+        ]
+      },
+      {
+        "_index": "call_center_0",
+        "_type": "case",
+        "_id": "452f40edadc0bb269615e19ab1bdf006",
+        "_score": null,
+        "fields": {
+          "dispatch.actionsRequired": [{
+            "common": {
+              "surveillance": true
+            }
+          }],
+          "contact.location.adminDivision3.id": [
+            "32-01"
+          ],
+          "callDetails": [
+            "New case!"
+          ],
+          "contact.name": [
+            "Barry Archibald"
+          ],
+          "createdBy.fullName": [
+            "sl_dis_user"
+          ],
+          "contact.location.adminDivision2.id": [
+            "32"
+          ],
+          "contact.location.adminDivision1.name": [
+            "west"
+          ],
+          "contact.category": [
+            "Medical Facility"
+          ],
+          "patient.age.months": [
+            0
+          ],
+          "patient.address": [
+            "74 Roundroad Road"
+          ],
+          "patient.location.adminDivision1.id": [
+            "W"
+          ],
+          "callNature": [
+            "quarantine"
+          ],
+          "contact.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "contact.location.adminDivision1.id": [
+            "W"
+          ],
+          "patient.patientName": [
+            "marion shelton"
+          ],
+          "contact.address": [
+            "74 Roundroad Road"
+          ],
+          "patient.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "patient.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "patient.age.years": [
+            39
+          ],
+          "patient.location.adminDivision2.id": [
+            "32"
+          ],
+          "patient.location.adminDivision1.name": [
+            "west"
+          ],
+          "patient.location.adminDivision3.id": [
+            "32-02"
+          ],
+          "patient.status": [
+            "dead"
+          ],
+          "createdOn": [
+            "2015-03-18T16:57:01.343Z"
+          ],
+          "patient.id": [
+            9834823
+          ],
+          "caseId": [
+            "SHEL"
+          ],
+          "patient.gender": [
+            "M"
+          ],
+          "contact.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "contact.phoneNo": [
+            "892784732"
+          ]
+        },
+        "sort": [
+          1426697821343
+        ]
+      },
+      {
+        "_index": "call_center_0",
+        "_type": "case",
+        "_id": "452f40edadc0bb269615e19ab1bae433",
+        "_score": null,
+        "fields": {
+          "contact.location.adminDivision3.id": [
+            "32-01"
+          ],
+          "callDetails": [
+            "New case!"
+          ],
+          "contact.name": [
+            "Giles Longhorn"
+          ],
+          "createdBy.fullName": [
+            "sl_dis_user"
+          ],
+          "contact.location.adminDivision2.id": [
+            "32"
+          ],
+          "contact.location.adminDivision1.name": [
+            "west"
+          ],
+          "contact.category": [
+            "Medical Facility"
+          ],
+          "patient.age.months": [
+            0
+          ],
+          "patient.address": [
+            "1 Nearthe Road"
+          ],
+          "patient.location.adminDivision1.id": [
+            "W"
+          ],
+          "callNature": [
+            "sick"
+          ],
+          "contact.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "patient.phoneNo": [
+            "8787879985"
+          ],
+          "contact.location.adminDivision1.id": [
+            "W"
+          ],
+          "patient.patientName": [
+            "Hugo Weaving"
+          ],
+          "contact.address": [
+            "1 Nearthe Road"
+          ],
+          "patient.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "patient.location.adminDivision2.name": [
+            "western rural"
+          ],
+          "patient.age.years": [
+            27
+          ],
+          "patient.location.adminDivision2.id": [
+            "32"
+          ],
+          "patient.location.adminDivision1.name": [
+            "west"
+          ],
+          "patient.location.adminDivision3.id": [
+            "32-02"
+          ],
+          "patient.status": [
+            "dead"
+          ],
+          "createdOn": [
+            "2015-03-18T16:57:01.343Z"
+          ],
+          "patient.id": [
+            987987
+          ],
+          "caseId": [
+            "HUGO"
+          ],
+          "patient.gender": [
+            "F"
+          ],
+          "contact.location.adminDivision3.name": [
+            "mountain"
+          ],
+          "contact.phoneNo": [
+            "3827938748723"
+          ]
+        },
+        "sort": [
+          1426697821343
+        ]
+      }
+    ]
+  }
+}

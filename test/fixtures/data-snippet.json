@@ -1,0 +1,59 @@
+{
+  "id": "0000439365f4c8a9c2e22bf1020153df",
+  "key": "0000439365f4c8a9c2e22bf1020153df",
+  "value": {
+    "rev": "2-73c7c05b0c240038b0e8c4fa77b5ff9a"
+  },
+  "doc": {
+    "_id": "000043936df4b8a9c2e22bf1020153df",
+    "_rev": "2-73c7c0wb02240038b0e8c4fa77b5ff9a",
+    "doc_type": "case",
+    "contact": {
+      "doc_type": "contact",
+      "createdOn": "2014-12-21T13:43:44.312Z",
+      "phoneNo": "98213982",
+      "location": {}
+    },
+    "patient": {
+      "doc_type": "patient",
+      "status": "alive",
+      "symptoms": {
+        "common": {
+          "fever": false,
+          "vomiting": false,
+          "diarrhea": false,
+          "weakness": false,
+          "muscleOrJointPain": false,
+          "bleeding": false,
+          "rash": false,
+          "abdominalPain": false,
+          "difficultySwallowing": false,
+          "headache": false,
+          "hiccup": false
+        },
+        "other": ""
+      },
+      "patientName": "unknown",
+      "location": {},
+      "age": {
+        "years": 0,
+        "months": 0
+      }
+    },
+    "response": {
+      "doc_type": "response",
+      "caseStatus": "open",
+      "location": {}
+    },
+    "dispatch": {},
+    "referenceNo": "unknown-ZZ-8237",
+    "version": "1.13.0",
+    "createdBy": {
+      "username": "gin_call_user",
+      "fullName": "Remy Sharp"
+    },
+    "createdOn": "2014-12-21T13:43:44.312Z",
+    "callNature": "prank call",
+    "callDetails": "ne communique pas"
+  }
+}

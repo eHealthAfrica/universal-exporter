@@ -1,0 +1,23 @@
+{
+  "name": "exporter",
+  "version": "1.2.0",
+  "homepage": "https://github.com/eHealthAfrica/universal-exporter",
+  "authors": [
+    "Remy Sharp <remy@leftlogic.com>"
+  ],
+  "description": "Export module for eHA",
+  "main": "dist/exporter.min.js",
+  "keywords": [
+    "export"
+  ],
+  "private": true,
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "tmp"
+  ]
+}

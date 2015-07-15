@@ -1,0 +1,20 @@
+{
+  "$root": "http://127.0.0.1:5984",
+  "participants": {
+    "$engine": "couch-csv",
+    "$path": "/test/_design/test/_view/all/",
+    "//": "byDate is just placeholder from legacy test - ignore for now",
+    "$methods": {
+      "byDate": "?play_name={{ play }}",
+      "all": "?play_name={{ play }}"
+    }
+  },
+  "blogs": {
+    "$engine": "elasticsearch",
+    "$root": "http://localhost:9200/",
+    "$path": "",
+    "$methods": {
+      "search": "shakespeare/_search?source={{ query | json | escape }}"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+<script>
+var JSZip = {};
+</script>
+<script src="exporter.debug.js"></script>
+<script>
+var config = {
+  "$root": "/* user designed */",
+  "participants": {
+    "$engine": "couch-csv",
+    "$path": "/_design/command/_view/by-date/",
+    "$methods": {
+      "byDate": "?startkey={{date | couchFormat}}&endkey={{date | couchFormat}}",
+      "all": "?startkey=[2000,1,1]&endkey={{date | couchFormat}}"
+      }
+  },
+  "blogs": {
+    "$remote": "http://localhost:8000/export",
+    "$engine": "elasticsearch",
+    "$root": "http://localhost:9200/",
+    "$path": "",
+    "$methods": {
+      "search": "myindex/_search?source={{ query | json | escape }}"
+    }
+  }
+};
+
+exporter.interpolate = {
+  json: JSON.stringify,
+  escape: encodeURIComponent,
+};
+
+exporter.iterators = {
+  toObject: function (value) {
+    return {
+      title: value.title,
+      date: '2015-09-13',
+    };
+  },
+  lower: function (row) {
+    var date = new Date(row.date);
+
+    return {
+      title: row.title.toLowerCase(),
+      date: {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear()
+      }
+    };
+  }
+};
+
+exporter.utils.leadingZero = function(number) {
+  if(number.toString().length === 1) {
+    return '0' + number;
+  }
+  return number;
+}
+
+
+exporter.config = config;
+exporter().get.blogs.search({
+  query: {"fields": ["title", "date"], "query": {"match": {"body": {"query": "require"}}}}
+})
+.lower()
+.slice(0, 5)
+.map(function(doc, index, all) {
+  // We store date/month/year of birth as a separate value,
+  // but put them together for CDC
+  var DoB = new Date(doc.date.year, doc.date.month, doc.date.day);
+  if(!isNaN(DoB.getTime())) {
+    doc.dateOfBirth = doc.date.year + '-' + exporter.utils.leadingZero(doc.date.month) + '-' + exporter.utils.leadingZero(doc.date.day);
+  }
+
+  return doc;
+})
+.columns([
+  'title: Blog title',
+  'date: Post date',
+])
+.save('my-file.xlsx')
+.then(function (saver) {
+  var blob = saver.data;
+  var element = document.createElement('a');
+
+  element.href = URL.createObjectURL(blob);
+  console.log(element.href);
+  element.target = '_blank';
+  element.download = saver.filename;
+  element.click();
+
+  document.body.appendChild(element);
+
+  // cleaning
+  setTimeout(function () {
+    element.parentNode.removeChild(element);
+    URL.revokeObjectURL(blob);
+  }, 500);
+
+});
+</script>

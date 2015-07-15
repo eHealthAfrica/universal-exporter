@@ -1,0 +1,73 @@
+{
+  "name": "exporter",
+  "version": "3.0.1",
+  "description": "Export module for eHA",
+  "main": "lib/exporter.js",
+  "private": true,
+  "browser": {
+    "crypto": "./lib/noop.js",
+    "xlsx-export": "./lib/noop.js",
+    "minimist": false,
+    "debug": "./client/debug.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "//": "the big data has a 3 minute timeout",
+    "test": "mocha test/*.test.js && mocha test/*.big.js --timeout 180000",
+    "prepare-tests": "test/fixtures/prepare-tests.sh",
+    "test-browser": "karma start",
+    "coverage": "istanbul cover _mocha -- --timeout 30000 --ui bdd --reporter list test/*.test.js",
+    "build": "mkdir -p dist; browserify -p bundle-collapser/plugin lib/exporter.js --standalone exporter -o dist/exporter.debug.js && uglifyjs --mangle --compress  -r self,exporter,exporter.iterators,key -- dist/exporter.debug.js > dist/exporter.min.js; echo 'dist/exporter.min.js (gzip):' $(gzip -c dist/exporter.min.js | wc -c)",
+    "postversion": "npm run build && git add dist/* && git commit --amend -m\"$npm_package_version\" && git tag -d v$npm_package_version && git tag -a v$npm_package_version -m 'chore: release $npm_package_version'"
+  },
+  "keywords": [
+    "export"
+  ],
+  "author": "Remy Sharp <remy@leftlogic.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "body-parser": "^1.12.4",
+    "browserify": "^10.2.1",
+    "bundle-collapser": "^1.2.0",
+    "chai": "^2.3.0",
+    "cors": "^2.7.1",
+    "csv-write-stream": "^1.0.0",
+    "elastic.js": "^1.2.0",
+    "express": "^4.12.4",
+    "istanbul": "^0.3.14",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.11",
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.3.1",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-sinon": "^1.0.4",
+    "lodash": "^3.9.2",
+    "mocha": "^2.2.4",
+    "nanotimer": "^0.3.10",
+    "sinon": "^1.14.1",
+    "uglify-js": "^2.4.21"
+  },
+  "dependencies": {
+    "JSONStream": "^1.0.4",
+    "csv-write-stream": "^1.0.0",
+    "debug": "^2.2.0",
+    "es6-promise": "^2.1.1",
+    "isomorphic-fetch": "^2.0.2",
+    "json-stream": "^1.0.0",
+    "lodash.clonedeep": "^3.0.0",
+    "lodash.merge": "^3.2.1",
+    "map-stream": "0.0.5",
+    "slice-through": "^1.0.0",
+    "sort-stream": "^1.0.1",
+    "stream-reduce": "^1.0.3",
+    "through": "^2.3.7",
+    "through-parse": "^0.1.0",
+    "xlsx": "^0.8.0",
+    "xlsx-export": "0.0.4"
+  }
+}
